@@ -1,0 +1,31 @@
+{
+  "name": "@laughingzhu/oauthsdk",
+  "version": "1.0.0",
+  "description": "基于oauth2.0实现单点登录",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BlogNext/oauthSdk.git"
+  },
+  "author": "LaughingZhu",
+  "keywords": [
+    "oauthsdk",
+    "单点登录"
+  ],
+  "license": "MIT License",
+  "bugs": {
+    "url": "https://github.com/BlogNext/oauthSdk/issues"
+  },
+  "homepage": "https://github.com/BlogNext/oauthSdk#readme",
+  "dependencies": {
+    "qs": "^6.5.2",
+    "umi-request": "^1.3.5"
+  },
+  "devDependencies": {
+    "@types/qs": "^6.9.6",
+    "typescript": "^4.1.2"
+  }
+}
