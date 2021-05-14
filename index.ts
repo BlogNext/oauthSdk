@@ -3,7 +3,7 @@
  * @Author: LaughingZhu
  * @Date: 2021-05-12 14:05:23
  * @LastEditros: 
- * @LastEditTime: 2021-05-14 11:07:54
+ * @LastEditTime: 2021-05-14 18:19:41
  */
 import qs from 'qs'
 import request from "./utils";
@@ -13,10 +13,12 @@ import request from "./utils";
 class OAuthSSO {
   private client_id: string;
   private redirect_url: string;
+  private login_url: string;
 
   constructor(client_id: string, redirect_url: string) {
     this.client_id = client_id;
     this.redirect_url = redirect_url;
+    this.login_url = 'https://log.laughingzhu.cn/'
   }
 
   /**
@@ -84,7 +86,7 @@ class OAuthSSO {
    * @returns 
    */
   async createRequest (data: any) {
-    return request(`http://154.8.142.48:8085/api/oauth/create_pre_auth_code`, {
+    return request(`https://log.laughingzhu.cn/api/oauth/create_pre_auth_code`, {
       method: 'POST',
       data
     })
