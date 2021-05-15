@@ -3,11 +3,10 @@
  * @Author: LaughingZhu
  * @Date: 2021-05-12 14:05:23
  * @LastEditros: 
- * @LastEditTime: 2021-05-14 18:19:41
+ * @LastEditTime: 2021-05-15 13:56:10
  */
 import qs from 'qs'
 import request from "./utils";
-
 
 
 class OAuthSSO {
@@ -18,35 +17,11 @@ class OAuthSSO {
   constructor(client_id: string, redirect_url: string) {
     this.client_id = client_id;
     this.redirect_url = redirect_url;
-    this.login_url = 'https://log.laughingzhu.cn/'
+    this.login_url = `https://log.laughingzhu.cn/`
   }
 
-  /**
-   * @desc 获取pre_auth_code
-   * @param {*} params 
-   */
-  async create (params: any, error?: ((arg0: any) => any) | undefined) {
-    const reqData = {
-      ...params,
-      client_id: this.client_id,
-      redirect_url: this.redirect_url
-    }
 
-    let res = await this.createRequest (reqData)
-    if(res.code === 0) {
-      // success
-      console.log('获取成功')
-      let referrer = document.referrer;
-      let prefix = referrer.indexOf('?') > -1 ? '&' : '?'
-      location.href = `${referrer}${prefix}pre_auth_code=${res.data.pre_auth_code}`
-    } else {
-      console.log('失败')
-
-      error && error(res.msg)
-    }
-  };
-
-  // 博客登录
+  // 博客登录，颁发令牌方法
   async login () {
     if(window) {
       /**
@@ -79,21 +54,22 @@ class OAuthSSO {
     }
   }
 
-
   /**
-   * @description 获取预授权码接口
-   * @param data 
-   * @returns 
+   * @description 跳转登录页页面，获取pre_oauth_code
    */
-  async createRequest (data: any) {
-    return request(`https://log.laughingzhu.cn/api/oauth/create_pre_auth_code`, {
-      method: 'POST',
-      data
-    })
+  _init () {
+    const url = `${this.login_url}?client_id=${this.client_id}&redirect_url=${this.redirect_url}`
+
+    location.href = url
   }
 
-/**
-   * @description 颁发令牌
+
+
+
+  // api
+
+  /**
+   * @description 颁发令牌api
    * @param data 
    * @returns 
    */

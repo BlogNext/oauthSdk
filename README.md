@@ -3,7 +3,7 @@
  * @Author: LaughingZhu
  * @Date: 2021-05-14 10:54:31
  * @LastEditros: 
- * @LastEditTime: 2021-05-14 15:53:39
+ * @LastEditTime: 2021-05-15 13:57:22
 -->
 # oauthSdk
 基于oauth2.0实现单点登录，client 客户端接入文档
@@ -21,6 +21,9 @@ import OAuthSSO from '@laughingzhu/oauthsdk'
 # 初始化sdk
 let oauth: OAuthSSO | null = null
 oauth = new OAuthSSO(client_id, redirect_url);
+
+# 跳转授权
+oauth._init()
 
 # 根据pre_auth_code获取令牌
 oauth.login()
