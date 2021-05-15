@@ -3,7 +3,7 @@
  * @Author: LaughingZhu
  * @Date: 2021-05-12 14:05:23
  * @LastEditros: 
- * @LastEditTime: 2021-05-15 13:56:10
+ * @LastEditTime: 2021-05-15 21:16:25
  */
 import qs from 'qs'
 import request from "./utils";
@@ -58,7 +58,12 @@ class OAuthSSO {
    * @description 跳转登录页页面，获取pre_oauth_code
    */
   _init () {
-    const url = `${this.login_url}?client_id=${this.client_id}&redirect_url=${this.redirect_url}`
+    let url = '';
+    if(this.client_id && this.redirect_url) {
+      url = `${this.login_url}?client_id=${this.client_id}&redirect_url=${this.redirect_url}`
+    } else {
+      url = `${this.login_url}error?client_id=${this.client_id}&redirect_url=${this.redirect_url}`
+    }
 
     location.href = url
   }
