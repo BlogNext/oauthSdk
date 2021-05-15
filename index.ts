@@ -3,7 +3,7 @@
  * @Author: LaughingZhu
  * @Date: 2021-05-12 14:05:23
  * @LastEditros: 
- * @LastEditTime: 2021-05-15 21:16:25
+ * @LastEditTime: 2021-05-15 21:20:29
  */
 import qs from 'qs'
 import request from "./utils";
@@ -14,7 +14,7 @@ class OAuthSSO {
   private redirect_url: string;
   private login_url: string;
 
-  constructor(client_id: string, redirect_url: string) {
+  constructor(client_id: string = '', redirect_url: string = '') {
     this.client_id = client_id;
     this.redirect_url = redirect_url;
     this.login_url = `https://log.laughingzhu.cn/`
