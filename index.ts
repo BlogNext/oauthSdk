@@ -3,7 +3,7 @@
  * @Author: LaughingZhu
  * @Date: 2021-05-12 14:05:23
  * @LastEditros: 
- * @LastEditTime: 2021-05-15 21:20:29
+ * @LastEditTime: 2021-05-19 11:43:25
  */
 import qs from 'qs'
 import request from "./utils";
@@ -17,7 +17,7 @@ class OAuthSSO {
   constructor(client_id: string = '', redirect_url: string = '') {
     this.client_id = client_id;
     this.redirect_url = redirect_url;
-    this.login_url = `https://log.laughingzhu.cn/`
+    this.login_url = `https://login.laughingzhu.cn/`
   }
 
 
@@ -58,14 +58,7 @@ class OAuthSSO {
    * @description 跳转登录页页面，获取pre_oauth_code
    */
   _init () {
-    let url = '';
-    if(this.client_id && this.redirect_url) {
-      url = `${this.login_url}?client_id=${this.client_id}&redirect_url=${this.redirect_url}`
-    } else {
-      url = `${this.login_url}error?client_id=${this.client_id}&redirect_url=${this.redirect_url}`
-    }
-
-    location.href = url
+    location.href = `${this.login_url}?client_id=${this.client_id}&redirect_url=${this.redirect_url}`
   }
 
 
