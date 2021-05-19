@@ -3,7 +3,7 @@
  * @Author: LaughingZhu
  * @Date: 2021-05-12 14:05:23
  * @LastEditros: 
- * @LastEditTime: 2021-05-19 15:46:33
+ * @LastEditTime: 2021-05-19 17:04:16
  */
 import qs from 'qs'
 import request from "./utils";
@@ -34,8 +34,13 @@ class OAuthSSO {
         let res = await this.loginRequest(this.redirect_url, {pre_code: searchQuery.pre_auth_code})
         if(res.code === 0) {
           console.log('登录成功', res)
-          let prefix = location.href.indexOf('?') > -1 ? '&' : '?'
-          location.replace(`${location.href}${prefix}token=${res.data}`)
+          
+          let stateObj = {
+            ...searchQuery,
+            pre_auth_code: null,
+            token: res.data
+          }
+          location.replace(`${location.href.split('?')[0]}?${qs.stringify(stateObj, { addQueryPrefix: true })}`)
         } else {
           // login error
           console.log('登录失败')
