@@ -1,6 +1,6 @@
 {
   "name": "@laughingzhu/oauthsdk",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "基于oauth2.0实现单点登录",
   "main": "index.js",
   "scripts": {
