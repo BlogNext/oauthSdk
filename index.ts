@@ -3,7 +3,7 @@
  * @Author: LaughingZhu
  * @Date: 2021-05-12 14:05:23
  * @LastEditros: 
- * @LastEditTime: 2021-05-19 17:04:16
+ * @LastEditTime: 2021-05-19 17:14:52
  */
 import qs from 'qs'
 import request from "./utils";
@@ -40,7 +40,7 @@ class OAuthSSO {
             pre_auth_code: null,
             token: res.data
           }
-          location.replace(`${location.href.split('?')[0]}?${qs.stringify(stateObj, { addQueryPrefix: true })}`)
+          location.replace(`${location.href.split('?')[0]}?${qs.stringify(stateObj)}`)
         } else {
           // login error
           console.log('登录失败')
